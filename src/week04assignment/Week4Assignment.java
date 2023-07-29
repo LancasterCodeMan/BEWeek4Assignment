@@ -168,7 +168,7 @@ public class Week4Assignment {
  * what the method does and why you created it.
  */
 		double[] rainFall2022 = {4.3, 5.1, 0.4, 2.3, 5.8, 11.2, 10.1, 2.3, 5.7, 6.9, 2.7, 1.5};
-		System.out.println(whichMonthHadMostRain(rainFall2022));
+		System.out.println("Coding step 13: In 2022 this month had the most rain: "+ (whichMonthHadMostRain(rainFall2022)));
 		//This method takes 12 months of rain fall and returns the month that has the greatest rain amount. I chose this because I like weather and 
 		//wanted to see if I could line up an array of strings and an array of numbers with the same length and pull them using a common index number. 
 		
