@@ -1,5 +1,6 @@
 package week04assignment;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 
 public class Week4Assignment {
@@ -99,9 +100,160 @@ public class Week4Assignment {
 		}
 		System.out.println("Coding step 5: " + Arrays.toString(nameLengths)); // print our new array NameLenghts on one line.
 		
+/*
+ * 6. Write a loop to iterate over the nameLengths array and calculate the sum
+ * of all the elements in the array. Print the result to the console
+*/	
+		int arrayLength = 0; //initialize variable to hold length of each element during loop
+		for (int num : nameLengths) { // loop through nameLengths array grabbing element value
+			arrayLength += num; // add element (integers) to arrayLength on each loop giving total sum when loop ends
+		}
+		System.out.println("Coding step 6: " + arrayLength); //print arrayLength variable which now hold sum of all the elements in nameLengths loop.
+	
+	
+/*
+ * 7. Write a method that takes a String, word, and an int, n, as arguments and
+ * returns the word concatenated to itself n number of times. (i.e. if I pass in
+ * “Hello” and 3, I expect the method to return “HelloHelloHello”).
+*/
 		
-		
-		
-	}
+		System.out.println("Coding step 7 using loop: " + repeatWord("Hello", 5));
+		System.out.println("Coding step 7 using repeat method: " + easyRepeatWord("Hello", 5));
 
-}
+/*
+ *  * 8. Write a method that takes two Strings, firstName and lastName, and returns
+ * a full name (the full name should be the first and the last name as a String
+ * separated by a space).
+*/
+		System.out.println("Coding step 8: " + createFullName("Tony", "Kuligowski"));
+		
+/*
+ * 9. Write a method that takes an array of int and returns true if the sum of
+ * all the ints in the array is greater than 100.
+*/
+		int[] test1 = {3, 9, 23, 64, 2, 8, 28, 93}; //sum greater than 100
+		int[] test2 = {1, 5, 9, 10}; // sum less than 100
+		
+		System.out.println("Coding step 9 test1: " + sumTrueOrFalse(test1));
+		System.out.println("Coding step 9 test2: " + sumTrueOrFalse(test2));
+
+/*
+ * 10. Write a method that takes an array of double and returns the average of
+ * all the elements in the array.
+*/
+		double[] testDouble1 = {1.5, 5.3, 9.8, 10.2}; //average 6.7
+		double[] testDouble2 = {3.5, 5.2, 6.9, 15.9}; //average 7.875
+		System.out.println("Coding step 10: " +returnAverage(testDouble1));
+		
+/*
+ * 11. Write a method that takes two arrays of double and returns true if the
+ * average of the elements in the first array is greater than the average of the
+ * elements in the second array.
+ */	
+		System.out.println("Coding step 11: "+ compareArrayAverage(testDouble1, testDouble2)); //returns false 6.7 is not greater than 7.875
+		
+		
+/*
+ * 12. Write a method called willBuyDrink that takes a boolean isHotOutside, and
+ * a double moneyInPocket, and returns true if it is hot outside and if
+ * moneyInPocket is greater than 10.50.
+ */		
+		boolean isHotOutside = true;
+		double moneyInPocket = 10.55;
+		System.out.println("Coding step 12: " + willIGetADrink(isHotOutside, moneyInPocket)); 
+
+
+/*
+ * 13. Create a method of your own that solves a problem. In comments, write
+ * what the method does and why you created it.
+ */
+		double[] rainFall2022 = {4.3, 5.1, 0.4, 2.3, 5.8, 11.2, 10.1, 2.3, 5.7, 6.9, 2.7, 1.5};
+		System.out.println(whichMonthHadMostRain(rainFall2022));
+		//This method takes 12 months of rain fall and returns the month that has the greatest rain amount. I chose this because I like weather and 
+		//wanted to see if I could line up an array of strings and an array of numbers with the same length and pull them using a common index number. 
+		
+	}// end of main method
+	
+	
+		//Method 13
+	public static String whichMonthHadMostRain(double[]array) {
+		String[] months = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
+		double max = array[0];
+		int maxIndex = 0;
+		for(int i = 1; i < array.length; i++) {
+			if(array[i] > max) {
+				max = array[i];
+				maxIndex = i;
+			}
+		}
+		return months[maxIndex];
+	}
+		
+	//Method 12	
+	public static boolean willIGetADrink(boolean isHotOutside, double moneyInPocket) { //create method that returns boolean with boolean and double input parameters
+		if(isHotOutside = true && moneyInPocket > 10.50) { // check both conditions for using if statement for true or false return
+			return true;
+		}
+			return false;
+	}
+	
+	//Method 11
+	public static boolean compareArrayAverage(double[]array1, double[]array2) { //create method that returns boolean and has two array of double for input parameters
+		double sumArray1 = 0; //initialize sum variable for Array1
+		double sumArray2 = 0; //initialize sum variable for Array2
+		for(double num : array1) { //  loop through array1 and add each number to sumArray variable
+			sumArray1 += num;
+		}
+		for(double num : array2) {//  loop through array2 and add each number to sumArray variable
+			sumArray2 += num;
+		}
+		if((sumArray1 / array1.length) > (sumArray2 / array2.length)) { //compare averages of array1 and array 2
+			return true;
+		}
+			return false;
+	}
+		
+		//Method 10
+	public static double returnAverage(double[] array) {
+		double sum = 0; //create and initialize sum variable to hold values as they are added to sum during loop
+		for(double num : array) { //create loop to add total of all array to sum variable
+			sum+= num; //add each number of array to sum variable until loop ends
+		}
+		return sum /array.length; // return the sum of the array of double divided by the length for average
+	}
+		
+		//Method 9
+	public static boolean sumTrueOrFalse(int[] numbers) { //create boolean method, pass in Array of int and return true or false
+		int sum = 0; // initialize sum variable which hold sum of the integers as the loop iterates. Each loop the next integer is added to the total. 
+		for(int num : numbers) { // Each loop the next integer is added to the sum variable.
+			sum += num;
+		}
+		if(sum > 100) { // if statement to compare if sum is greater or less than 100
+			return true; // return true if sum is greater than 100
+		}
+			return false;// return false if sum is less than 100
+	}
+	
+		
+	//Method 8
+	public static String createFullName(String firstName, String lastName) { // create method that takes first name and last name as parameters
+		String fullName = firstName + " " + lastName; // create and initialize fullName string variable that combines first and last name with space in middle
+		return fullName; // return fullName
+	}//end creatFullName method
+		
+	//Method 7
+	public static String repeatWord(String word, int n) { //create method returning a string with a string and integer as input parameters
+		String result = ""; //assign empty sting to variable. This will hold our word as it repeats.
+		for (int i = 0; i < n; i++) { // run loop the same times as variable n
+			result += word;  // result holds the word and adds the word to it again each time until the loop ends.
+		}
+		return result;	// this is not a void method so it returns the result
+	
+	}//end repeatWord method
+	
+	public static String easyRepeatWord(String word, int n) {
+		String repeatedWord = word.repeat(n); // instead of using loop use string repeat method. Pass in value or int variable for how many times to repeat.
+		return repeatedWord;
+	}// end easyRepeatWord method
+	
+} // end of class
